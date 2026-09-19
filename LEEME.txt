@@ -1,0 +1,159 @@
+========================================================
+REM COLOMBIA — Sitio web (landing page)
+========================================================
+
+Este sitio está listo para mostrarlo en local. Aún no se ha
+subido a ningún hosting (eso lo harán más adelante).
+
+
+1) CÓMO VER EL SITIO EN TU COMPUTADOR
+------------------------------------------------------
+El sitio usa JavaScript moderno (fetch, formularios) que los
+navegadores BLOQUEAN si abres el archivo index.html con doble
+clic (protocolo file://). Por eso hay que levantar un pequeño
+servidor local. Es un solo comando, no instala nada raro:
+
+  1. Abre una terminal (CMD, PowerShell o Terminal) dentro de
+     esta carpeta (la que contiene este LEEME.txt).
+  2. Ejecuta:
+
+       python -m http.server 8080
+
+     (En algunos computadores el comando es "python3" en vez
+     de "python".)
+
+  3. Abre tu navegador en:
+
+       http://localhost:8080
+
+  4. Para detener el servidor, vuelve a la terminal y presiona
+     Ctrl + C.
+
+Si abres index.html con doble clic vas a poder ver todo el
+diseño y el contenido perfectamente, pero el formulario de
+contacto NO podrá enviarse (necesita el servidor local o,
+más adelante, un hosting real).
+
+
+2) ACTIVAR EL FORMULARIO DE CONTACTO (GRATIS, RECOMENDADO)
+------------------------------------------------------
+El proyecto ahora viene listo para enviar mensajes por backend
+propio en Vercel (más seguro que enviar directo desde frontend).
+
+Arquitectura:
+- Frontend: main.js envía a /api/contact
+- Backend: api/contact.js
+- Proveedor de correo: Resend (plan free)
+
+PASOS:
+  1. Crea cuenta en https://resend.com
+  2. Genera una API Key (RESEND_API_KEY)
+  3. En Vercel, abre tu proyecto > Settings > Environment Variables
+  4. Crea estas variables:
+
+       RESEND_API_KEY=tu_api_key
+       CONTACT_TO_EMAIL=reinventandoelmundo2015@gmail.com
+       CONTACT_FROM_EMAIL=onboarding@resend.dev
+
+  5. Redeploy del proyecto en Vercel
+
+Notas importantes:
+- CONTACT_FROM_EMAIL puede quedarse en onboarding@resend.dev
+  para pruebas iniciales.
+- Para producción real, conviene validar tu dominio y usar
+  un remitente propio (ejemplo: contacto@tudominio.com).
+
+Si deseas volver al modo Web3Forms (frontend directo), puedes
+cambiar lib/manifest.js:
+- provider: "web3forms"
+- endpoint: "https://api.web3forms.com/submit"
+- accessKey: "TU_ACCESS_KEY"
+
+
+3) BOTÓN DE WHATSAPP
+------------------------------------------------------
+El botón flotante y los botones "Hablar por WhatsApp" ya
+apuntan al número +57 314 3769696. No requieren configuración.
+
+
+4) QUÉ NO SE INCLUYÓ (A PROPÓSITO, POR AHORA)
+------------------------------------------------------
+- No se generó archivo .htaccess ni configuración de caché de
+  servidor: eso se hace cuando decidan el hosting definitivo.
+- No se incluyó GSAP ni ninguna librería externa: el entorno en
+  el que se generó este sitio no tuvo acceso a internet para
+  descargarlas, así que todas las animaciones (aparición de
+  secciones al hacer scroll, barras de proceso, menú móvil,
+  botón de WhatsApp) se hicieron en JavaScript puro, sin
+  dependencias. Esto es una ventaja para uso local: el sitio no
+  necesita internet para verse y animarse correctamente (solo
+  la necesita para cargar las tipografías de Google Fonts y
+  para que el formulario envíe el correo).
+
+
+5) ANTES DE PUBLICARLO (cuando llegue el momento)
+------------------------------------------------------
+- Reemplazar el dominio de ejemplo "https://www.remcolombia.co/"
+  que aparece en index.html (etiqueta canonical, Open Graph y
+  JSON-LD), en robots.txt y en sitemap.xml, por el dominio real.
+- Revisar la dirección física en la sección de contacto y en el
+  JSON-LD: se dejó exactamente como la entregaron ("Subachoque-
+  El Rosal, Montería, Subachoque, Cundinamarca"); si hay un
+  error de digitación en esa dirección, corregirlo directamente
+  en index.html (sección #contacto) y en el bloque JSON-LD del
+  <head>.
+- Completar la clave de Web3Forms (ver punto 2) si aún no se
+  hizo.
+
+
+6) ESTRUCTURA DE LA CARPETA
+------------------------------------------------------
+index.html            Página principal (todo el contenido)
+styles.css             Todos los estilos
+main.js                 Todo el comportamiento (sin dependencias)
+lib/manifest.js         Datos de contacto y configuración del formulario
+assets/img/             Logo, favicons e imagen para compartir en redes
+assets/photos/source/   Imágenes originales que enviaron (logo)
+robots.txt, sitemap.xml Archivos de SEO básico
+tools/                  Carpeta vacía, puede ignorarse o borrarse
+
+
+7) PUBLICAR EN VERCEL (SIN ROMPER CSS/JS)
+------------------------------------------------------
+Sí, este proyecto se puede subir a Vercel tal como está.
+No hay que cambiar estilos ni JavaScript para que funcionen.
+
+IMPORTANTE:
+- En Vercel, la "Root Directory" del proyecto debe ser:
+
+    rem-colombia
+
+  (NO la carpeta padre rem-colombia-web).
+
+Si eliges mal la carpeta raíz, Vercel no encontrará:
+- ./styles.css
+- ./main.js
+- ./assets/...
+
+y la página se verá sin estilos o sin comportamiento.
+
+Configuración recomendada en Vercel:
+- Framework Preset: Other
+- Build Command: (vacío)
+- Output Directory: (vacío)
+- Install Command: (vacío)
+
+Después de publicar, valida en el navegador (F12 > Network)
+que carguen con estado 200 estos archivos:
+- /styles.css
+- /main.js
+- /lib/manifest.js
+
+Si cargan en 200, el sitio quedó bien publicado.
+
+Además, valida el endpoint de formulario:
+- /api/contact (debe existir en producción)
+
+Cualquier ajuste de textos, teléfono, correo o dirección se
+hace directamente en index.html — todo el contenido está
+escrito ahí, no depende de ninguna base de datos ni backend.
