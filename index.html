@@ -75,6 +75,8 @@
 </head>
 <body>
 
+<div class="reading-progress" id="reading-progress" aria-hidden="true"><div class="reading-progress-fill" id="reading-progress-fill"></div></div>
+
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- ============================= HEADER / NAV ============================= -->
@@ -94,6 +96,7 @@
       <a href="#metodologia">Metodología</a>
       <a href="#diferenciadores">Diferenciadores</a>
       <a href="#contacto">Contacto</a>
+      <a href="#contacto" class="btn btn-primary nav-cta-mobile">Solicitar diagnóstico</a>
     </nav>
 
     <div class="header-actions">
@@ -101,7 +104,7 @@
         <span class="icon-phone" aria-hidden="true"></span>
         +57 314 3769696
       </a>
-      <a href="#contacto" class="btn btn-primary btn-sm">Solicitar diagnóstico</a>
+      <a href="#contacto" class="btn btn-primary btn-sm header-cta">Solicitar diagnóstico</a>
       <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
@@ -156,15 +159,15 @@
 
       <ul class="hero-stats" role="list">
         <li>
-          <span class="stat-num">10+</span>
+          <span class="stat-num"><span class="count-up" data-count-to="10">10</span>+</span>
           <span class="stat-label">años en el mercado</span>
         </li>
         <li>
-          <span class="stat-num">15+</span>
+          <span class="stat-num"><span class="count-up" data-count-to="15">15</span>+</span>
           <span class="stat-label">instituciones aliadas</span>
         </li>
         <li>
-          <span class="stat-num">100%</span>
+          <span class="stat-num"><span class="count-up" data-count-to="100">100</span>%</span>
           <span class="stat-label">entidad jurídica formal</span>
         </li>
         <li>
@@ -207,7 +210,10 @@
           </div>
           <h3>Auditoría y cumplimiento normativo</h3>
           <p>Verificación y acompañamiento en el cumplimiento de la totalidad de estándares y normas que la institución debe certificar, sin dejar procesos sueltos.</p>
-          <a href="#contacto" class="card-link">Conocer más →</a>
+          <details class="card-more">
+            <summary class="card-link">Conocer más</summary>
+            <p class="card-more-text">Revisamos su institución frente a los estándares y normas vigentes, identificamos las brechas existentes y construimos un plan de acción claro para cerrarlas, con acompañamiento hasta la certificación.</p>
+          </details>
         </article>
 
         <article class="card reveal" data-reveal>
@@ -216,7 +222,10 @@
           </div>
           <h3>Consultoría en gestión educativa y social</h3>
           <p>Diagnóstico y plan de mejora para instituciones del sector social y educativo, con enfoque sistémico y metodología propia.</p>
-          <a href="#contacto" class="card-link">Conocer más →</a>
+          <details class="card-more">
+            <summary class="card-link">Conocer más</summary>
+            <p class="card-more-text">Partimos de un diagnóstico de la situación actual, con entrevistas y revisión documental, para construir un plan de mejora ajustado al contexto y a los recursos reales de la institución.</p>
+          </details>
         </article>
 
         <article class="card reveal" data-reveal>
@@ -225,7 +234,10 @@
           </div>
           <h3>Gestión del conocimiento y coaching</h3>
           <p>Encuentros de coaching con un gestor de conocimiento asignado, para resolver inquietudes y transferir aprendizajes al equipo de la institución.</p>
-          <a href="#contacto" class="card-link">Conocer más →</a>
+          <details class="card-more">
+            <summary class="card-link">Conocer más</summary>
+            <p class="card-more-text">Un gestor de conocimiento acompaña a su equipo con sesiones periódicas de coaching, resolviendo dudas puntuales y dejando capacidad instalada dentro de la institución.</p>
+          </details>
         </article>
 
         <article class="card reveal" data-reveal>
@@ -234,7 +246,10 @@
           </div>
           <h3>Mejora continua — Metodología CREAR</h3>
           <p>A partir de un análisis de fortalezas y oportunidades, definimos qué crear, reducir, eliminar o ampliar, con lecciones aprendidas y estandarización.</p>
-          <a href="#contacto" class="card-link">Conocer más →</a>
+          <details class="card-more">
+            <summary class="card-link">Conocer más</summary>
+            <p class="card-more-text">Con base en el análisis de fortalezas, debilidades, oportunidades y amenazas, priorizamos qué crear, reducir, eliminar o ampliar, documentando lecciones aprendidas para sostener la mejora en el tiempo.</p>
+          </details>
         </article>
       </div>
     </div>
@@ -496,6 +511,7 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="form-submit">Enviar mensaje</button>
 
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <p class="form-reassurance"><span class="icon-lock" aria-hidden="true"></span> Sus datos están protegidos y solo se usan para responder su solicitud, conforme a la Ley 1581 de 2012. Le respondemos en menos de 24 horas hábiles.</p>
         <!--<p class="form-note">Este formulario funciona con un servidor local activo (ver LEEME.txt). Al abrir el archivo con doble clic no podrá enviarse.</p>-->
       </form>
     </div>

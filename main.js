@@ -44,6 +44,63 @@
     }, timeoutMs || 6000);
   }
 
+  /* ---------- Barra de progreso de lectura ---------- */
+  function initReadingProgress() {
+    var fill = $("#reading-progress-fill");
+    if (!fill) return;
+    function update() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+      fill.style.width = pct + "%";
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+  }
+
+  /* ---------- Conteo animado de las cifras del hero ---------- */
+  function initCountUp() {
+    var items = $$(".count-up");
+    if (!items.length) return;
+
+    function animate(el) {
+      var target = parseInt(el.getAttribute("data-count-to"), 10);
+      if (!target || reduced) { el.textContent = String(target || el.textContent); return; }
+      var duration = 1200;
+      var start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var progress = Math.min(1, (ts - start) / duration);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = String(Math.round(eased * target));
+        if (progress < 1) window.requestAnimationFrame(step);
+        else el.textContent = String(target);
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    if (!("IntersectionObserver" in window) || reduced) {
+      items.forEach(function (el) { el.textContent = el.getAttribute("data-count-to"); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    items.forEach(function (el) { io.observe(el); });
+
+    setTimeout(function () {
+      items.forEach(function (el) { el.textContent = el.getAttribute("data-count-to"); });
+    }, 6000);
+  }
+
   /* ---------- Header: fondo sólido al hacer scroll ---------- */
   function initHeaderScroll() {
     var header = $("#site-header");
@@ -225,6 +282,8 @@
   }
 
   function boot() {
+    safe(initReadingProgress, "initReadingProgress");
+    safe(initCountUp, "initCountUp");
     safe(initHeaderScroll, "initHeaderScroll");
     safe(initNavToggle, "initNavToggle");
     safe(initReveals, "initReveals");
