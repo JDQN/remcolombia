@@ -146,49 +146,95 @@
     revealWithObserver(bars, { threshold: 0.05 }, 6000);
   }
 
-  /* ---------- Carrusel de aliados: desplazamiento automático con pausa ---------- */
+  /* ---------- Carrusel de aliados: desplazamiento automático + control manual ---------- */
   function initAlliesCarousel() {
     var carousel = $("#allies-carousel");
     var track = $("#allies-track");
+    var prevBtn = $("#allies-prev");
+    var nextBtn = $("#allies-next");
     if (!carousel || !track) return;
 
     var items = $$("li", track);
     if (!items.length) return;
 
-    if (reduced) return; // sin animación: queda como carrusel deslizable manualmente (touch/scroll)
+    function cloneSet() {
+      items.forEach(function (li) {
+        var clone = li.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.classList.remove("reveal");
+        clone.removeAttribute("data-reveal");
+        $$("a, button", clone).forEach(function (el) { el.setAttribute("tabindex", "-1"); });
+        track.appendChild(clone);
+      });
+    }
 
-    items.forEach(function (li) {
-      var clone = li.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.classList.remove("reveal");
-      clone.removeAttribute("data-reveal");
-      $$("a, button", clone).forEach(function (el) { el.setAttribute("tabindex", "-1"); });
-      track.appendChild(clone);
-    });
+    if (!reduced) {
+      // Se triplica el set (no solo se duplica) para que el loop infinito
+      // funcione sin saltos tanto hacia adelante (autoplay) como hacia
+      // atrás (flecha "anterior"), con margen de sobra en ambos sentidos.
+      cloneSet();
+      cloneSet();
+      carousel.scrollLeft = track.scrollWidth / 3;
+    }
 
     var paused = false;
-    var speed = 0.5; // px por frame
+    var resumeTimer = null;
+    var speed = 0.35; // px por frame — desplazamiento suave, no apresurado
+    var remainder = 0; // acumula la fracción de píxel: scrollLeft solo admite enteros
 
     function pause() { paused = true; }
     function resume() { paused = false; }
+    function pauseThenResume(delay) {
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(resume, delay);
+    }
+
     carousel.addEventListener("mouseenter", pause);
     carousel.addEventListener("mouseleave", resume);
     carousel.addEventListener("touchstart", pause, { passive: true });
-    carousel.addEventListener("touchend", resume, { passive: true });
+    carousel.addEventListener("touchend", function () { pauseThenResume(2000); }, { passive: true });
     carousel.addEventListener("focusin", pause);
     carousel.addEventListener("focusout", resume);
 
+    function wrap() {
+      var third = track.scrollWidth / 3;
+      if (carousel.scrollLeft >= third * 2) {
+        carousel.scrollLeft -= third;
+      } else if (carousel.scrollLeft <= 0) {
+        carousel.scrollLeft += third;
+      }
+    }
+
     function step() {
-      if (!paused) {
-        var half = track.scrollWidth / 2;
-        carousel.scrollLeft += speed;
-        if (carousel.scrollLeft >= half) {
-          carousel.scrollLeft -= half;
+      if (!paused && !reduced) {
+        var total = speed + remainder;
+        var whole = Math.trunc(total);
+        remainder = total - whole;
+        if (whole !== 0) {
+          carousel.scrollLeft += whole;
+          wrap();
         }
       }
       requestAnimationFrame(step);
     }
-    requestAnimationFrame(step);
+
+    function cardStep() {
+      var card = $(".ally-card", track);
+      var gap = 16; // 1rem
+      return card ? card.getBoundingClientRect().width + gap : 236;
+    }
+
+    function goTo(direction) {
+      carousel.scrollBy({ left: direction * cardStep(), behavior: reduced ? "auto" : "smooth" });
+      pauseThenResume(3000);
+      if (!reduced) setTimeout(wrap, 450);
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", function () { goTo(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { goTo(1); });
+
+    if (!reduced) requestAnimationFrame(step);
   }
 
   /* ---------- Botón flotante de WhatsApp: aparece tras un pequeño scroll ---------- */
