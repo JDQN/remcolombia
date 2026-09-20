@@ -146,6 +146,51 @@
     revealWithObserver(bars, { threshold: 0.05 }, 6000);
   }
 
+  /* ---------- Carrusel de aliados: desplazamiento automático con pausa ---------- */
+  function initAlliesCarousel() {
+    var carousel = $("#allies-carousel");
+    var track = $("#allies-track");
+    if (!carousel || !track) return;
+
+    var items = $$("li", track);
+    if (!items.length) return;
+
+    if (reduced) return; // sin animación: queda como carrusel deslizable manualmente (touch/scroll)
+
+    items.forEach(function (li) {
+      var clone = li.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.classList.remove("reveal");
+      clone.removeAttribute("data-reveal");
+      $$("a, button", clone).forEach(function (el) { el.setAttribute("tabindex", "-1"); });
+      track.appendChild(clone);
+    });
+
+    var paused = false;
+    var speed = 0.5; // px por frame
+
+    function pause() { paused = true; }
+    function resume() { paused = false; }
+    carousel.addEventListener("mouseenter", pause);
+    carousel.addEventListener("mouseleave", resume);
+    carousel.addEventListener("touchstart", pause, { passive: true });
+    carousel.addEventListener("touchend", resume, { passive: true });
+    carousel.addEventListener("focusin", pause);
+    carousel.addEventListener("focusout", resume);
+
+    function step() {
+      if (!paused) {
+        var half = track.scrollWidth / 2;
+        carousel.scrollLeft += speed;
+        if (carousel.scrollLeft >= half) {
+          carousel.scrollLeft -= half;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   /* ---------- Botón flotante de WhatsApp: aparece tras un pequeño scroll ---------- */
   function initWhatsappFloat() {
     var btn = $(".whatsapp-float");
@@ -289,6 +334,7 @@
     safe(initReveals, "initReveals");
     safe(initProcessBars, "initProcessBars");
     safe(initWhatsappFloat, "initWhatsappFloat");
+    safe(initAlliesCarousel, "initAlliesCarousel");
     safe(initYear, "initYear");
     safe(initContactForm, "initContactForm");
     safe(initAnchorOffset, "initAnchorOffset");

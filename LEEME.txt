@@ -73,7 +73,7 @@ cambiar lib/manifest.js:
 3) BOTÓN DE WHATSAPP
 ------------------------------------------------------
 El botón flotante y los botones "Hablar por WhatsApp" ya
-apuntan al número +57 314 3769696. No requieren configuración.
+apuntan al número +57 321 2238344. No requieren configuración.
 
 
 4) QUÉ NO SE INCLUYÓ (A PROPÓSITO, POR AHORA)

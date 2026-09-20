@@ -219,6 +219,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
   border-radius: var(--radius-md);
   padding: 1.75rem 1.5rem;
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .section-alt .card { background: var(--bg); }
 .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
@@ -230,7 +233,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
 }
 .card-link:hover { transform: translateX(3px); }
 
-.card-more { margin-top: 1rem; }
+.card-more { margin-top: auto; padding-top: 1rem; }
 .card-more summary {
   list-style: none; cursor: pointer;
   display: inline-flex; align-items: center; gap: 0.4rem;
@@ -427,6 +430,15 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
   font-size: 1.3rem;
   color: var(--navy);
 }
+.pull-quote-cite {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--sans, inherit);
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
 
 /* =============================================================
    9. Metodología
@@ -450,9 +462,21 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
 .method-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
 .method-item p { font-size: 0.92rem; color: var(--ink-mute); }
 
+.process-split-title {
+  font-size: 1.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.process-split-lede {
+  color: var(--ink-mute);
+  font-size: 0.96rem;
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
 .process-split {
   display: grid; grid-template-columns: 1fr; gap: 2rem;
-  padding-top: 2.5rem; border-top: 1px solid var(--line);
 }
 @media (min-width: 720px) { .process-split { grid-template-columns: repeat(2, 1fr); gap: 3rem; } }
 .process-bar {
@@ -498,7 +522,8 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
 .diff-num[data-tone="cyan"]   { background: var(--cyan); color: var(--ink); }
 .diff-num[data-tone="pink"]   { background: var(--pink); color: #fff; }
 .diff-num[data-tone="orange"] { background: var(--orange); color: var(--ink); }
-.diff-card p { font-size: 0.96rem; color: var(--ink-soft); }
+.diff-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.diff-card p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
 
 /* =============================================================
    11. Equipo
@@ -536,17 +561,19 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
 /* =============================================================
    12. Aliados (logos)
    ============================================================= */
-.allies-grid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
+.allies-carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   margin-top: 0.35rem;
+  padding-bottom: 0.25rem;
 }
-@media (min-width: 620px) {
-  .allies-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (min-width: 980px) {
-  .allies-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.allies-carousel::-webkit-scrollbar { display: none; }
+.allies-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
 }
 
 .ally-card {
@@ -555,6 +582,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
   border-radius: var(--radius-md);
   padding: 1.05rem 1rem 1.1rem;
   min-height: 185px;
+  width: 220px;
+  flex: 0 0 220px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -563,6 +593,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
   text-align: center;
   box-shadow: 0 14px 24px -20px rgba(0, 0, 0, 0.45);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) {
+  .allies-carousel { scroll-snap-type: x proximity; }
 }
 .ally-card:hover {
   transform: translateY(-4px);
