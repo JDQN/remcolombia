@@ -714,6 +714,28 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
 .form-checkbox { flex-direction: row; align-items: flex-start; gap: 0.65rem; }
 .form-checkbox input { margin-top: 0.25rem; width: 17px; height: 17px; flex-shrink: 0; accent-color: var(--navy); }
 .form-checkbox label { font-weight: 400; font-size: 0.85rem; color: var(--ink-mute); }
+
+.required-mark { color: var(--ink-mute); font-weight: 600; }
+.required-mark.is-invalid { color: #b3261e; }
+
+.field-error {
+  display: block;
+  min-height: 1.15em;
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: #b3261e;
+}
+.field-error-checkbox { margin-top: -0.4rem; margin-bottom: 1.25rem; }
+
+.form-row input.is-invalid,
+.form-row textarea.is-invalid {
+  border-color: #b3261e;
+}
+.form-row input.is-invalid:focus,
+.form-row textarea.is-invalid:focus {
+  border-color: #b3261e;
+  box-shadow: 0 0 0 4px rgba(179, 38, 30, 0.14);
+}
 .botcheck-field { position: absolute; left: -9999px; opacity: 0; }
 
 .form-status { margin-top: 1rem; font-size: 0.9rem; min-height: 1.2em; }

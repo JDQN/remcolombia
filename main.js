@@ -302,14 +302,69 @@
     var status = $("#form-status");
     if (!form) return;
 
+    var fields = [
+      { input: $("#f-name", form), mark: $("#f-name-mark", form), error: $("#f-name-error", form), message: "Ingrese su nombre completo." },
+      { input: $("#f-email", form), mark: $("#f-email-mark", form), error: $("#f-email-error", form), message: "Ingrese un correo electrónico válido.", isEmail: true },
+      { input: $("#f-message", form), mark: $("#f-message-mark", form), error: $("#f-message-error", form), message: "Escriba su mensaje." },
+      { input: $("#f-consent", form), mark: $("#f-consent-mark", form), error: $("#f-consent-error", form), message: "Debe autorizar el tratamiento de datos personales para continuar.", isCheckbox: true }
+    ];
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function fieldIsValid(f) {
+      if (!f.input) return true;
+      if (f.isCheckbox) return f.input.checked;
+      var value = f.input.value.trim();
+      if (!value) return false;
+      return f.isEmail ? isValidEmail(value) : true;
+    }
+
+    function setFieldInvalid(f) {
+      if (!f.input) return;
+      f.input.classList.add("is-invalid");
+      if (f.mark) f.mark.classList.add("is-invalid");
+      if (f.error) f.error.textContent = f.message;
+    }
+
+    function clearFieldInvalid(f) {
+      if (!f.input) return;
+      f.input.classList.remove("is-invalid");
+      if (f.mark) f.mark.classList.remove("is-invalid");
+      if (f.error) f.error.textContent = "";
+    }
+
+    fields.forEach(function (f) {
+      if (!f.input) return;
+      f.input.addEventListener(f.isCheckbox ? "change" : "input", function () {
+        if (fieldIsValid(f)) clearFieldInvalid(f);
+      });
+    });
+
+    function validateAll() {
+      var firstInvalid = null;
+      fields.forEach(function (f) {
+        if (!f.input) return;
+        if (fieldIsValid(f)) {
+          clearFieldInvalid(f);
+        } else {
+          setFieldInvalid(f);
+          if (!firstInvalid) firstInvalid = f.input;
+        }
+      });
+      return firstInvalid;
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
       if (form.botcheck?.checked) return; // honeypot anti-spam
 
-      var consent = $("#f-consent");
-      if (consent && !consent.checked) {
-        setStatus("Debe autorizar el tratamiento de datos personales para continuar.", "error");
+      var firstInvalid = validateAll();
+      if (firstInvalid) {
+        setStatus("Por favor complete los campos marcados en rojo para continuar.", "error");
+        firstInvalid.focus();
         return;
       }
 
@@ -334,6 +389,7 @@
           if (json?.success) {
             setStatus("Gracias, hemos recibido su mensaje. Le responderemos muy pronto.", "ok");
             form.reset();
+            fields.forEach(clearFieldInvalid);
           } else {
             setStatus("No fue posible enviar el mensaje. Intente de nuevo o escríbanos por WhatsApp.", "error");
           }

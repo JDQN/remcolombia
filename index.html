@@ -481,8 +481,9 @@
         <h3 class="form-title">Solicita tu diagnóstico gratuito</h3>
         <p class="form-subtitle">Complete el formulario y un gestor de conocimiento le responderá en menos de 24 horas hábiles.</p>
         <div class="form-row">
-          <label for="f-name">Nombre completo *</label>
-          <input type="text" id="f-name" name="name" required autocomplete="name">
+          <label for="f-name">Nombre completo <span class="required-mark" id="f-name-mark">*</span></label>
+          <input type="text" id="f-name" name="name" required autocomplete="name" aria-describedby="f-name-error">
+          <span class="field-error" id="f-name-error" role="alert"></span>
         </div>
         <div class="form-row">
           <label for="f-institucion">Institución</label>
@@ -490,8 +491,9 @@
         </div>
         <div class="form-row form-row-split">
           <div>
-            <label for="f-email">Correo electrónico *</label>
-            <input type="email" id="f-email" name="email" required autocomplete="email">
+            <label for="f-email">Correo electrónico <span class="required-mark" id="f-email-mark">*</span></label>
+            <input type="email" id="f-email" name="email" required autocomplete="email" aria-describedby="f-email-error">
+            <span class="field-error" id="f-email-error" role="alert"></span>
           </div>
           <div>
             <label for="f-phone">Teléfono</label>
@@ -499,14 +501,16 @@
           </div>
         </div>
         <div class="form-row">
-          <label for="f-message">Mensaje *</label>
-          <textarea id="f-message" name="message" rows="4" required></textarea>
+          <label for="f-message">Mensaje <span class="required-mark" id="f-message-mark">*</span></label>
+          <textarea id="f-message" name="message" rows="4" required aria-describedby="f-message-error"></textarea>
+          <span class="field-error" id="f-message-error" role="alert"></span>
         </div>
 
         <div class="form-row form-checkbox">
-          <input type="checkbox" id="f-consent" name="consent" required>
-          <label for="f-consent">Autorizo a REM Colombia el tratamiento de mis datos personales conforme a la Ley 1581 de 2012, con el fin de responder a esta solicitud *</label>
+          <input type="checkbox" id="f-consent" name="consent" required aria-describedby="f-consent-error">
+          <label for="f-consent">Autorizo a REM Colombia el tratamiento de mis datos personales conforme a la Ley 1581 de 2012, con el fin de responder a esta solicitud <span class="required-mark" id="f-consent-mark">*</span></label>
         </div>
+        <span class="field-error field-error-checkbox" id="f-consent-error" role="alert"></span>
 
         <input type="hidden" name="subject" value="Nuevo contacto desde el sitio web de REM Colombia">
         <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off">
