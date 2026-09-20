@@ -316,6 +316,13 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
   background: var(--blue); transition: right 0.3s var(--ease-out);
 }
 .main-nav a:hover { color: var(--navy); }
+.main-nav a.nav-cta-mobile,
+.main-nav a.nav-cta-mobile:hover {
+  color: #fff;
+}
+.main-nav a.nav-cta-mobile::after {
+  display: none;
+}
 .main-nav a:hover::after { right: 0; }
 
 .header-actions { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
