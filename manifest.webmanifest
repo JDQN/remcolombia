@@ -1,0 +1,17 @@
+{
+  "name": "REM Colombia — Consultoría y Auditoría",
+  "short_name": "REM Colombia",
+  "description": "Consultoría y auditoría de cumplimiento normativo para instituciones educativas y del sector social en Colombia.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "lang": "es-CO",
+  "background_color": "#F7F9FC",
+  "theme_color": "#123B7A",
+  "icons": [
+    { "src": "./assets/img/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "./assets/img/favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "./assets/img/favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "./assets/img/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

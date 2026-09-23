@@ -7,6 +7,8 @@
 <meta name="description" content="REM Colombia acompaña a colegios, fundaciones y entidades del sector social en el cumplimiento de estándares y normas, con una metodología propia, coaching directo y 10 años de experiencia.">
 <meta name="keywords" content="consultoría educativa Colombia, auditoría de cumplimiento, asesoría instituciones educativas, ICONTEC colegios, REM Colombia, consultoría sector social">
 <meta name="author" content="REM Colombia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#123B7A">
 <link rel="canonical" href="https://www.remcolombia.co/">
 
 <!-- Open Graph -->
@@ -18,6 +20,7 @@
 <meta property="og:image" content="./assets/img/og-image.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="REM Colombia — consultoría y auditoría para instituciones educativas y sociales">
 <meta property="og:url" content="https://www.remcolombia.co/">
 
 <!-- Twitter -->
@@ -27,6 +30,8 @@
 <meta name="twitter:image" content="./assets/img/og-image.webp">
 
 <!-- Favicons -->
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="./assets/img/favicon-64.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon-180.png">
@@ -39,13 +44,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 
-<link rel="stylesheet" href="./styles.css?v=20260919">
+<link rel="stylesheet" href="./styles.min.css?v=20260922">
 
-<!-- JSON-LD: ProfessionalService + LocalBusiness -->
+<!-- JSON-LD: ProfessionalService (organizacion) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": ["ProfessionalService", "LocalBusiness"],
+  "@id": "https://www.remcolombia.co/#organization",
   "name": "REM Colombia",
   "alternateName": "REM Colombia — Reinventando el mundo",
   "legalName": "Reinventando el mundo SAS",
@@ -54,23 +60,115 @@
   "logo": "https://www.remcolombia.co/assets/img/logo-rem.webp",
   "telephone": "+57-321-2238344",
   "email": "reinventandoelmundo2015@gmail.com",
-  "priceRange": "$$",
   "areaServed": "CO",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Subachoque",
+    "streetAddress": "Cra. 1 # 5-44",
     "addressLocality": "Subachoque",
     "addressRegion": "Cundinamarca",
     "addressCountry": "CO"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 4.9287591,
+    "longitude": -74.1709261
+  },
   "url": "https://www.remcolombia.co/",
-  "sameAs": [],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+57-321-2238344",
+      "email": "reinventandoelmundo2015@gmail.com",
+      "areaServed": "CO",
+      "availableLanguage": ["es"]
+    }
+  ],
   "knowsAbout": [
     "Auditoría y cumplimiento normativo",
     "Consultoría educativa",
     "Gestión de calidad ICONTEC",
-    "Mejora continua institucional"
+    "Mejora continua institucional",
+    "Acreditación de instituciones educativas",
+    "Coaching institucional"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Auditoría y cumplimiento normativo",
+        "description": "Verificación exhaustiva frente a los estándares y normas vigentes, identificación de brechas y plan de acción con acompañamiento hasta la certificación.",
+        "provider": { "@id": "https://www.remcolombia.co/#organization" },
+        "areaServed": "CO"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Consultoría en gestión educativa y social",
+        "description": "Diagnóstico profundo y diseño de planes de mejora con enfoque sistémico para instituciones educativas y sociales.",
+        "provider": { "@id": "https://www.remcolombia.co/#organization" },
+        "areaServed": "CO"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Gestión del conocimiento y coaching",
+        "description": "Acompañamiento y mentoría directa para transferir conocimiento y desarrollar capacidades del equipo institucional.",
+        "provider": { "@id": "https://www.remcolombia.co/#organization" },
+        "areaServed": "CO"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Mejora continua — Metodología CREAR",
+        "description": "Análisis de fortalezas y oportunidades para transformar la realidad institucional en una ruta de evolución sostenible.",
+        "provider": { "@id": "https://www.remcolombia.co/#organization" },
+        "areaServed": "CO"
+      }
+    }
   ]
+}
+</script>
+
+<!-- JSON-LD: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.remcolombia.co/#website",
+  "name": "REM Colombia",
+  "url": "https://www.remcolombia.co/",
+  "inLanguage": "es-CO",
+  "publisher": { "@id": "https://www.remcolombia.co/#organization" }
+}
+</script>
+
+<!-- JSON-LD: WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.remcolombia.co/#webpage",
+  "url": "https://www.remcolombia.co/",
+  "name": "REM Colombia — Consultoría y Auditoría para Instituciones Educativas y Sociales",
+  "description": "REM Colombia acompaña a colegios, fundaciones y entidades del sector social en el cumplimiento de estándares y normas, con una metodología propia, coaching directo y 10 años de experiencia.",
+  "inLanguage": "es-CO",
+  "isPartOf": { "@id": "https://www.remcolombia.co/#website" },
+  "about": { "@id": "https://www.remcolombia.co/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://www.remcolombia.co/assets/img/og-image.webp",
+    "width": 1200,
+    "height": 630
+  },
+  "dateModified": "2026-09-22"
 }
 </script>
 </head>
@@ -83,7 +181,7 @@
 <!-- ============================= HEADER / NAV ============================= -->
 <header class="site-header" id="site-header">
   <div class="container header-inner">
-    <a href="#inicio" class="brand" aria-label="REM Colombia — inicio">
+    <a href="#inicio" class="brand" aria-label="REM Colombia — Reinventando el mundo. Ir a inicio">
       <img src="./assets/img/logo-rem.webp" alt="Logo REM Colombia" width="44" height="44" class="brand-mark">
       <span class="brand-text">
         <span class="brand-name">REM Colombia</span>
@@ -213,7 +311,7 @@
           <h3>Auditoría y cumplimiento normativo</h3>
           <p>Realizamos una verificación exhaustiva y te acompañamos paso a paso en la obtención de todas las certificaciones que tu organización se haya propuesto para llegar a la excelencia. Articulamos cada área de tu institución con rigor, garantizando un cumplimiento integral donde ningún proceso queda al azar.</p>
           <details class="card-more">
-            <summary class="card-link">Conocer más</summary>
+            <summary class="card-link" aria-label="Conocer más sobre auditoría y cumplimiento normativo">Conocer más</summary>
             <p class="card-more-text">Revisamos su institución frente a los estándares y normas vigentes, identificamos las brechas existentes y construimos un plan de acción claro para cerrarlas, con acompañamiento hasta la certificación.</p>
           </details>
         </article>
@@ -225,7 +323,7 @@
           <h3>Consultoría en gestión educativa y social</h3>
           <p>Trazamos la ruta hacia la excelencia de tu institución. A través de un diagnóstico profundo y nuestra metodología propia, diseñamos planes de mejora con un enfoque sistémico: conectamos y optimizamos cada área de tu organización para asegurar un crecimiento sostenible y coherente con tu misión.</p>
           <details class="card-more">
-            <summary class="card-link">Conocer más</summary>
+            <summary class="card-link" aria-label="Conocer más sobre consultoría en gestión educativa y social">Conocer más</summary>
             <p class="card-more-text">Partimos de un diagnóstico de la situación actual, con entrevistas y revisión documental, para construir un plan de mejora ajustado al contexto y a los recursos reales de la institución.</p>
           </details>
         </article>
@@ -237,7 +335,7 @@
           <h3>Gestión del conocimiento y coaching</h3>
           <p>Transferimos conocimiento y desarrollamos capacidades junto al equipo de tu institución. A través de un aprendizaje colaborativo y mentoría directa, empoderamos a tu talento para apropiarse de los procesos y sostener la excelencia en el tiempo.</p>
           <details class="card-more">
-            <summary class="card-link">Conocer más</summary>
+            <summary class="card-link" aria-label="Conocer más sobre gestión del conocimiento y coaching">Conocer más</summary>
             <p class="card-more-text">Un gestor de conocimiento acompaña a su equipo con sesiones periódicas de coaching, resolviendo dudas puntuales y dejando capacidad instalada dentro de la institución.</p>
           </details>
         </article>
@@ -249,7 +347,7 @@
           <h3>Mejora continua: Metodología CREAR.</h3>
           <p>Transformamos tu realidad institucional en una ruta de evolución sostenible. A partir de un análisis profundo de fortalezas y oportunidades, definimos estratégicamente qué Crear, Reducir, Eliminar o Ampliar en tu organización. Capitalizamos las lecciones aprendidas y estandarizamos procesos para asegurar que la excelencia sea un hábito constante.</p>
           <details class="card-more">
-            <summary class="card-link">Conocer más</summary>
+            <summary class="card-link" aria-label="Conocer más sobre mejora continua — metodología CREAR">Conocer más</summary>
             <p class="card-more-text">Con base en el análisis de fortalezas, debilidades, oportunidades y amenazas, priorizamos qué crear, reducir, eliminar o ampliar, documentando lecciones aprendidas para sostener la mejora en el tiempo.</p>
           </details>
         </article>
@@ -369,63 +467,63 @@
       <div class="allies-carousel" id="allies-carousel">
       <ul class="allies-track" id="allies-track" aria-label="Instituciones aliadas de REM Colombia">
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/colegioBilingueMaximilianoKolbe.png" alt="Logo Colegio Bilingüe Maximiliano Kolbe" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/colegioBilingueMaximilianoKolbe.webp" width="400" height="106" alt="Logo Colegio Bilingüe Maximiliano Kolbe" class="ally-logo" loading="lazy" decoding="async">
           <p>Colegio Bilingüe Maximiliano Kolbe</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/colegioDeLaSalleBogota.png" alt="Logo Colegio de La Salle Bogotá" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/colegioDeLaSalleBogota.webp" width="400" height="400" alt="Logo Colegio de La Salle Bogotá" class="ally-logo" loading="lazy" decoding="async">
           <p>Colegio de La Salle Bogotá</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/compensarFundacionUniversitaria.png" alt="Logo Compensar Fundación Universitaria" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/compensarFundacionUniversitaria.webp" width="400" height="400" alt="Logo Compensar Fundación Universitaria" class="ally-logo" loading="lazy" decoding="async">
           <p>Compensar Fundación Universitaria</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/escuelaColombianaDeRehabilitacion.png" alt="Logo Escuela Colombiana de Rehabilitación" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/escuelaColombianaDeRehabilitacion.webp" width="400" height="400" alt="Logo Escuela Colombiana de Rehabilitación" class="ally-logo" loading="lazy" decoding="async">
           <p>Escuela Colombiana de Rehabilitación</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/gimnasioAlessandroVoltaColegioItaliano.png" alt="Logo Gimnasio Alessandro Volta Colegio Italiano" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/gimnasioAlessandroVoltaColegioItaliano.webp" width="400" height="400" alt="Logo Gimnasio Alessandro Volta Colegio Italiano" class="ally-logo" loading="lazy" decoding="async">
           <p>Gimnasio Alessandro Volta — Colegio Italiano</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/gimnasioWilliamMackinleys.png" alt="Logo Gimnasio William Mackinleys" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/gimnasioWilliamMackinleys.webp" width="224" height="225" alt="Logo Gimnasio William Mackinleys" class="ally-logo" loading="lazy" decoding="async">
           <p>Gimnasio William Mackinleys</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/institucionEducativaDepartamentalSanGabrielCajica.jpg" alt="Logo Institución Educativa Departamental San Gabriel Cajicá" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/institucionEducativaDepartamentalSanGabrielCajica.webp" width="400" height="400" alt="Logo Institución Educativa Departamental San Gabriel Cajicá" class="ally-logo" loading="lazy" decoding="async">
           <p>Institución Educativa Departamental San Gabriel Cajicá</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/soyEucaristicoMercedario.png" alt="Logo Soy Eucarístico Mercedario" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/soyEucaristicoMercedario.webp" width="400" height="309" alt="Logo Soy Eucarístico Mercedario" class="ally-logo" loading="lazy" decoding="async">
           <p>Soy Eucarístico Mercedario</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/canadianMontessori.jpg" alt="Logo Canadian Montessori Pre-School" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/canadianMontessori.webp" width="400" height="400" alt="Logo Canadian Montessori Pre-School" class="ally-logo" loading="lazy" decoding="async">
           <p>Canadian Montessori Pre-School</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/escuelaNacionalAuxiliaresDeEnfermeriaManizales.png" alt="Logo Escuela Nacional de Auxiliares de Enfermería — Manizales" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/escuelaNacionalAuxiliaresDeEnfermeriaManizales.webp" width="200" height="200" alt="Logo Escuela Nacional de Auxiliares de Enfermería — Manizales" class="ally-logo" loading="lazy" decoding="async">
           <p>Escuela Nacional de Auxiliares de Enfermería — Manizales</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/Icontec.png" alt="Logo Icontec" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/Icontec.webp" width="400" height="343" alt="Logo Icontec" class="ally-logo" loading="lazy" decoding="async">
           <p>Icontec</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/pastoralFamiliarParroquialSanMiguelArcangelSubachoque.jpg" alt="Logo Pastoral Familiar Parroquial San Miguel Arcángel — Subachoque" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/pastoralFamiliarParroquialSanMiguelArcangelSubachoque.webp" width="400" height="400" alt="Logo Pastoral Familiar Parroquial San Miguel Arcángel — Subachoque" class="ally-logo" loading="lazy" decoding="async">
           <p>Pastoral Familiar Parroquial San Miguel Arcángel — Subachoque</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/pilotecnicoGrancolombiano.png" alt="Logo Politécnico Grancolombiano" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/pilotecnicoGrancolombiano.webp" width="400" height="246" alt="Logo Politécnico Grancolombiano" class="ally-logo" loading="lazy" decoding="async">
           <p>Politécnico Grancolombiano</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/RCConcultores.png" alt="Logo RC Consultores" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/RCConcultores.webp" width="400" height="240" alt="Logo RC Consultores" class="ally-logo" loading="lazy" decoding="async">
           <p>RC Consultores</p>
         </li>
         <li class="ally-card reveal" data-reveal>
-          <img src="./assets/photos/source/seceducasionGobiernoDeCundinamarca.jpg" alt="Logo Secretaría de Educación — Gobernación de Cundinamarca" class="ally-logo" loading="lazy" decoding="async">
+          <img src="./assets/photos/source/seceducasionGobiernoDeCundinamarca.webp" width="400" height="182" alt="Logo Secretaría de Educación — Gobernación de Cundinamarca" class="ally-logo" loading="lazy" decoding="async">
           <p>Secretaría de Educación — Gobernación de Cundinamarca</p>
         </li>
       </ul>
@@ -457,6 +555,7 @@
         <h2>Contacto</h2>
         <p class="section-sub">Cuéntenos sobre su institución y el estándar o norma que necesita certificar. Un gestor de conocimiento le responderá.</p>
 
+        <address class="nap-address">
         <ul class="contact-list">
           <li>
             <span class="icon-phone" aria-hidden="true"></span>
@@ -471,6 +570,7 @@
             <span>Subachoque Cundinamarca<br>Bogotá, Colombia</span>
           </li>
         </ul>
+        </address>
 
         <a href="https://wa.me/573212238344?text=Hola%20REM%20Colombia%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20consultor%C3%ADa%20y%20auditor%C3%ADa." target="_blank" rel="noopener" class="btn btn-whatsapp">
           <span class="icon-whatsapp" aria-hidden="true"></span> Escribe por WhatsApp
@@ -513,7 +613,7 @@
         <span class="field-error field-error-checkbox" id="f-consent-error" role="alert"></span>
 
         <input type="hidden" name="subject" value="Nuevo contacto desde el sitio web de REM Colombia">
-        <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off">
+        <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="form-submit">Enviar mensaje</button>
 
@@ -558,8 +658,8 @@
 </a>
 
 <!-- brand data -->
-<script defer src="./lib/manifest.js?v=20260919"></script>
+<script defer src="./lib/manifest.min.js?v=20260922"></script>
 <!-- entry point -->
-<script defer src="./main.js?v=20260919"></script>
+<script defer src="./main.min.js?v=20260922"></script>
 </body>
 </html>

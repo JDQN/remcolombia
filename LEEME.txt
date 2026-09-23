@@ -157,3 +157,28 @@ Además, valida el endpoint de formulario:
 Cualquier ajuste de textos, teléfono, correo o dirección se
 hace directamente en index.html — todo el contenido está
 escrito ahí, no depende de ninguna base de datos ni backend.
+
+
+========================================================
+NOTA IMPORTANTE — ARCHIVOS MINIFICADOS (rendimiento SEO)
+========================================================
+Para producción, index.html carga las versiones minificadas:
+  styles.min.css, main.min.js, lib/manifest.min.js
+
+Los archivos originales y legibles (styles.css, main.js,
+lib/manifest.js) SIGUEN AQUÍ y son los que debes editar cuando
+necesites cambiar algo. Los .min.* son solo copias comprimidas
+generadas automáticamente a partir de esos originales.
+
+Si en el futuro editas styles.css, main.js o lib/manifest.js,
+hay que regenerar sus versiones .min antes de desplegar (si no,
+el sitio seguirá mostrando la versión vieja minificada). Puedes
+pedirle a Claude que las regenere, o hacerlo tú mismo con:
+
+  npx clean-css-cli -o styles.min.css styles.css
+  npx terser main.js -o main.min.js --compress --mangle --comments false
+  npx terser lib/manifest.js -o lib/manifest.min.js --compress --mangle --comments false
+
+Y recuerda subir el número de versión (?v=YYYYMMDD) en los
+<link>/<script> de index.html para que el navegador no use una
+copia vieja en caché.

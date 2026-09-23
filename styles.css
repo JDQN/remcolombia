@@ -94,6 +94,13 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; letter-spacing: -0.01em;
 }
 .skip-link:focus { top: 1rem; }
 
+/* Reset semantico: <address> no debe verse distinto a como se veia el <ul> que envuelve */
+.nap-address {
+  font-style: normal;
+  margin: 0;
+  display: contents;
+}
+
 .container {
   width: 100%;
   max-width: var(--container);
